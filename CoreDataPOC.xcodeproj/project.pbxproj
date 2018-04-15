@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11D296E420667E2C0002FEF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D296E320667E2C0002FEF6 /* ImageCache.swift */; };
 		9B2C65F91DFAA12D00CE506C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C65F81DFAA12D00CE506C /* AppDelegate.swift */; };
 		9B2C65FB1DFAA12D00CE506C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C65FA1DFAA12D00CE506C /* ViewController.swift */; };
 		9B2C65FE1DFAA12D00CE506C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2C65FC1DFAA12D00CE506C /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11D296E320667E2C0002FEF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		9B2C65F51DFAA12D00CE506C /* CoreDataPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2C65F81DFAA12D00CE506C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B2C65FA1DFAA12D00CE506C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				9B3CA63F20089A1D00BE9B3C /* BookTableViewCell.swift */,
 				9B98A5F52032D2570065CB01 /* ReaderViewController.swift */,
 				9B98A5F72032D41F0065CB01 /* BookDetailViewController.swift */,
+				11D296E320667E2C0002FEF6 /* ImageCache.swift */,
 				9BC9EEA720344B6A0086F59F /* CoreDataManager.swift */,
 				9B2C65FC1DFAA12D00CE506C /* Main.storyboard */,
 				9B2C66021DFAA12D00CE506C /* Assets.xcassets */,
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D296E420667E2C0002FEF6 /* ImageCache.swift in Sources */,
 				9B2C65FB1DFAA12D00CE506C /* ViewController.swift in Sources */,
 				9B2C65F91DFAA12D00CE506C /* AppDelegate.swift in Sources */,
 				9B3CA63E200621FE00BE9B3C /* Book.swift in Sources */,

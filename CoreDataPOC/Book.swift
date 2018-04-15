@@ -21,11 +21,11 @@ struct Book {
     let authors: String?
     
     init(title: String?,
-        description: String?,
-        imageUrl: URL?,
-        publisher: String?,
-        publishDate: String?,
-        authors: String?) {
+         description: String?,
+         imageUrl: URL?,
+         publisher: String?,
+         publishDate: String?,
+         authors: String?) {
         
         self.title = title
         self.description = description
@@ -69,10 +69,10 @@ extension Book: Decodable {
         title = try volumeInfo.decode(String?.self,
                                       forKey: .title)
         do {
-        let imageLinks = try volumeInfo.nestedContainer(keyedBy: CodingKeys.self,
-                                                        forKey: .imageLinks)
-        imageUrl = try imageLinks.decode(URL.self,
-                                         forKey: .thumbnail)
+            let imageLinks = try volumeInfo.nestedContainer(keyedBy: CodingKeys.self,
+                                                            forKey: .imageLinks)
+            imageUrl = try imageLinks.decode(URL.self,
+                                             forKey: .thumbnail)
         } catch {
             imageUrl = nil
         }
@@ -84,7 +84,11 @@ extension Book: Decodable {
         }
         publishDate = try volumeInfo.decode(String?.self,
                                             forKey: .publishedDate)
-        authors = try volumeInfo.decode([String].self, forKey: .authors).joined(separator: ",")
+        do {
+            authors = try volumeInfo.decode([String].self, forKey: .authors).joined(separator: ",")
+        } catch {
+            authors = "NA"
+        }
         do {
             description = try volumeInfo.decode(String?.self,
                                                 forKey: .description)

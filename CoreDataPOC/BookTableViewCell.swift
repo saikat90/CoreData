@@ -9,7 +9,7 @@
 import UIKit
 
 class BookTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -24,15 +24,7 @@ class BookTableViewCell: UITableViewCell {
             publisherLabel.text = "Publisher: \(book?.publisher ?? "")"
             publishedDateLabel.text = "Date: \(book?.publishDate ?? "")"
             authorsLabel.text = "By:\(book?.authors ?? "")"
-            guard let url = book?.imageUrl else {
-                bookImageView.image = #imageLiteral(resourceName: "placeHolder")
-                return
-            }
-            CoreService(request: URLRequest(url: url)).makeRequest {
-                [weak self] (data, error) in
-                guard let data = data else { return }
-                self?.bookImageView.image = UIImage(data: data)
-            }
+            bookImageView.downloadFrom(imageUrl: book?.imageUrl)
         }
     }
     
@@ -40,11 +32,34 @@ class BookTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
+
+extension UIImageView {
+    
+    func downloadFrom(imageUrl: URL?,
+                      placeHolder: UIImage = #imageLiteral(resourceName: "placeHolder")) {
+        guard let url = imageUrl else {
+            image = #imageLiteral(resourceName: "placeHolder")
+            return
+        }
+        guard let imageData = ImageCache.sharedInstance.getImagefrom(url: url) else {
+            CoreService(request: URLRequest(url: url)).makeRequest {
+                [weak self] (data, error) in
+                guard let data = data else { return }
+                ImageCache.sharedInstance.storeImageinCache(from: url, data: data)
+                self?.image = UIImage(data: data)
+            }
+            return
+        }
+        image = UIImage(data: imageData)
+    }
+}
+
+

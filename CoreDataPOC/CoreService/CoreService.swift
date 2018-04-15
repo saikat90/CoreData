@@ -27,7 +27,6 @@ struct CoreService {
             {(data: Data?,
                 response: URLResponse?,
                 error: Error?) -> Void in
-                print("response \((response as? HTTPURLResponse)?.statusCode)")
                 DispatchQueue.main.async {
                     guard let responseError = error else {
                         onCompletion?(data,nil)
